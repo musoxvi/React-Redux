@@ -2,19 +2,21 @@ import { createStore } from 'redux';
 
 const reducer = (state, action) => {
     const { type , product } = action;
-    if (type === 'ADD_TO_CART') {
-        return {
-            ...state,
-            cart: state.cart.concat(product)
-        }
 
-    } else if (type === 'REMOVE_FROM_CART' ) {
-        return {
-            ...state,
-            cart: state.cart.filter( pro => pro.id !== product.id )
-        }
 
+    switch (type) {
+        case 'ADD_TO_CART':
+            return  {
+                ...state,
+                cart: state.cart.concat(product)
+            }
+        case 'REMOVE_FROM_CART':
+            return {
+                ...state,
+                cart: state.cart.filter( pro => pro.id !== product.id )
+            }
+        default:
+            return state
     }
-    return state;
 }
 export default createStore(reducer, { cart: [] });

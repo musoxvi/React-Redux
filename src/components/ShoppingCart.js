@@ -13,7 +13,7 @@ const styles = {
 const ShoppingCart = ({cart, removeFromCart }) => {
   return (
     <Panel header="Shopping Cart">
-      <Table fill>
+      <Table>
         <tbody>
           {cart.map(product =>
             <tr key={product.id}>
